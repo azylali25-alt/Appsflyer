@@ -1,0 +1,1 @@
+import {describe,it,expect} from 'vitest';import {autoMap} from '../src/lib/column-mapping';describe('mapping',()=>it('maps AppsFlyer headers case-insensitively',()=>expect(autoMap(['Install Time','Media Source','Country Code','Installs'])).toMatchObject({date:'Install Time',media_source:'Media Source',country:'Country Code',installs:'Installs'})));

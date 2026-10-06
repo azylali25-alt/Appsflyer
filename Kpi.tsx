@@ -1,0 +1,1 @@
+export function Kpi({label,value,delta,icon}:{label:string;value:string;delta?:string;icon?:string}){const up=delta?.startsWith('+');return <div className="card kpi"><div className="kpiTop"><span>{label}</span><span className="kpiIcon">{icon||'◦'}</span></div><strong>{value}</strong>{delta&&<div className={up?'delta up':'delta down'}>{delta} vs previous period</div>}</div>}

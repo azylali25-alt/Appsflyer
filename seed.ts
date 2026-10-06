@@ -1,0 +1,1 @@
+import {PrismaClient} from '@prisma/client';import argon2 from 'argon2';const db=new PrismaClient();async function main(){const email='demo@example.com';await db.user.upsert({where:{email},update:{},create:{email,passwordHash:await argon2.hash('DemoPassword123!'),role:'owner'}});console.log('Seeded demo@example.com / DemoPassword123!');}main().finally(()=>db.$disconnect());

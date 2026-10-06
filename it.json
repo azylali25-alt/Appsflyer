@@ -1,0 +1,27 @@
+{
+  "nav": {
+    "overview": "Overview",
+    "daily": "Daily",
+    "weekly": "Weekly",
+    "sources": "Sources & Channels",
+    "trends": "Trends",
+    "geography": "Geography",
+    "payable": "Payable Events",
+    "actions": "Actions",
+    "uploads": "Uploads",
+    "settings": "Settings"
+  },
+  "common": {
+    "language": "Language",
+    "theme": "Theme",
+    "upload": "Upload",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "actions": {
+    "test": "Test",
+    "push": "Push",
+    "optimize": "Optimize",
+    "extend": "Extend timeframe"
+  }
+}

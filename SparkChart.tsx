@@ -1,0 +1,2 @@
+'use client';
+export function SparkChart({values,height=220}:{values:number[];height?:number}){const w=800,p=20,max=Math.max(...values),min=Math.min(...values);const pts=values.map((v,i)=>`${p+i*(w-2*p)/Math.max(1,values.length-1)},${p+(max-v)*(height-2*p)/Math.max(1,max-min)}`).join(' ');return <svg viewBox={`0 0 ${w} ${height}`} style={{width:'100%',height}} role="img" aria-label="Trend chart"><polyline points={pts} fill="none" stroke="currentColor" strokeWidth="3" opacity=".8"/></svg>}

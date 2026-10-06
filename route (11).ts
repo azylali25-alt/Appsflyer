@@ -1,0 +1,1 @@
+import {NextResponse} from 'next/server';import {getSession} from '@/server/session';import {db} from '@/server/db';export async function GET(){const s=await getSession();if(!s)return NextResponse.json({error:'Unauthorized'},{status:401});return NextResponse.json(await db.upload.findMany({where:{userId:s.userId},orderBy:{createdAt:'desc'},take:100}))}

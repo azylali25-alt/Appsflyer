@@ -1,0 +1,1 @@
+import './globals.css';export const metadata={title:'PulseFly — AppsFlyer Analytics',description:'Performance analytics for AppsFlyer exports'};export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body>{children}</body></html>}

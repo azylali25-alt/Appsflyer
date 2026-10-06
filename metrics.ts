@@ -1,0 +1,5 @@
+export type Metrics={impressions:number;clicks:number;installs:number;cost:number;revenue:number;events:number;payers:number};
+const div=(a:number,b:number)=>b? a/b:0;
+export function computeMetrics(m:Metrics){return {...m,ctr:div(m.clicks,m.impressions),cvr:div(m.installs,m.clicks),cpi:div(m.cost,m.installs),roas:div(m.revenue,m.cost),roi:div(m.revenue-m.cost,m.cost),arpu:div(m.revenue,m.installs),arppu:div(m.revenue,m.payers)};}
+export function trendBadge(values:number[]){if(values.length<2)return 'stable';const half=Math.max(1,Math.floor(values.length/2));const a=values.slice(0,half).reduce((x,y)=>x+y,0)/half;const b=values.slice(-half).reduce((x,y)=>x+y,0)/half;const change=a? (b-a)/a:0;return change>.08?'growing':change<-.08?'declining':'stable';}
+export function anomalyFlags(values:number[]){if(values.length<3)return values.map(()=>false);const avg=values.reduce((a,b)=>a+b,0)/values.length;const sd=Math.sqrt(values.reduce((s,v)=>s+(v-avg)**2,0)/values.length);return values.map(v=>sd>0&&Math.abs(v-avg)>2*sd);}

@@ -1,0 +1,6 @@
+ 'use client';
+import {createContext,useContext,useEffect,useMemo,useState} from 'react';
+type Filters={range:string;source:string;channel:string;country:string;query:string};
+const C=createContext<any>(null);
+export function AnalyticsProvider({children}:{children:React.ReactNode}){const [data,setData]=useState<any>(null);const [loading,setLoading]=useState(true);const [filters,setFilters]=useState<Filters>({range:'30D',source:'All',channel:'All',country:'All',query:''});useEffect(()=>{const saved=localStorage.getItem('af_filters');if(saved)try{setFilters(JSON.parse(saved))}catch{};fetch('/api/analytics').then(r=>r.ok?r.json():null).then(setData).finally(()=>setLoading(false))},[]);useEffect(()=>{localStorage.setItem('af_filters',JSON.stringify(filters))},[filters]);const filtered=useMemo(()=>{if(!data)return null;const sources=(data.sources||[]).filter((r:any)=>(filters.source==='All'||r.Source===filters.source)&&(filters.channel==='All'||r.Channel===filters.channel)&&(filters.country==='All'||r.Country===filters.country)&&(!filters.query||`${r.Source} ${r.Channel} ${r.Campaign}`.toLowerCase().includes(filters.query.toLowerCase())));return {...data,sources}},[data,filters]);return <C.Provider value={{data:filtered,raw:data,loading,filters,setFilters,refresh:()=>location.reload()}}>{children}</C.Provider>}
+export const useAnalytics=()=>useContext(C);

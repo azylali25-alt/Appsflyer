@@ -1,0 +1,42 @@
+{
+  "name": "appsflyer-analytics-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "tsx prisma/seed.ts",
+    "i18n:check": "tsx scripts/check-i18n.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "argon2": "^0.44.0",
+    "date-fns": "^4.1.0",
+    "jose": "^6.1.0",
+    "next": "^15.5.4",
+    "next-intl": "^4.3.9",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "recharts": "^3.2.1",
+    "xlsx": "^0.18.5",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "prisma": "^6.16.2",
+    "tailwindcss": "^4.1.13",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,1 @@
+import {Shell} from '@/components/Shell';import {LiveOverview} from '@/components/LiveOverview';export default function Page(){return <Shell title="Overview"><LiveOverview/></Shell>}
